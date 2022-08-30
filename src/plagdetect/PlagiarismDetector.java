@@ -3,36 +3,37 @@ package plagdetect;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.*;
 import java.util.Map;
 
 public class PlagiarismDetector implements IPlagiarismDetector {
 	
+	private int N_CONST;
+	private HashMap<String, HashSet<String>> processedFiles;
+	
 	public PlagiarismDetector(int n) {
-		// TODO implement this method
+		N_CONST = n;
+
 	}
 	
 	@Override
 	public int getN() {
-		// TODO Auto-generated method stub
-		return 0;
+		return N_CONST;
 	}
 
 	@Override
 	public Collection<String> getFilenames() {
-		// TODO Auto-generated method stub
-		return null;
+		return processedFiles.keySet();
 	}
 
 	@Override
 	public Collection<String> getNgramsInFile(String filename) {
-		// TODO Auto-generated method stub
-		return null;
+		return processedFiles.get(filename);
 	}
 
 	@Override
 	public int getNumNgramsInFile(String filename) {
-		// TODO Auto-generated method stub
-		return 0;
+		return processedFiles.get(filename).size();
 	}
 
 	@Override
