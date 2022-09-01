@@ -138,8 +138,6 @@ public class PlagiarismDetector implements IPlagiarismDetector {
 				String temp2 = (String) inner.next();
 				if(thePairs.get(temp1).get(temp2) >= minNgrams) {
 					sus.add(temp1 + " " + temp2 + " " + thePairs.get(temp1).get(temp2));
-				} else {
-					System.out.println(temp1 + " " + temp2 + " " + thePairs.get(temp1).get(temp2) + " failed to be more than " + minNgrams);
 				}
 			}
 			inner = keys2.iterator();

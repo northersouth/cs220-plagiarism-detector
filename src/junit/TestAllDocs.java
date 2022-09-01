@@ -37,12 +37,36 @@ class TestAllDocs {
 		// The average essay is less than 500 words long.
 		// What is a good number to put here? Try some different values to
 		// figure that out!
-		Collection<String> pairs = detector.getSuspiciousPairs(500);
+		Collection<String> pairs = detector.getSuspiciousPairs(200);
 		for (String pair : pairs) {
 			System.out.println(pair);
 		}
 		total = System.currentTimeMillis() - start;
-		System.out.printf("It took %.1f seconds to check for suspicious pairs in the documents\n", total/1000.0);
+		System.out.printf("It took %.1f seconds to check for suspicious 3-gram pairs over 200 in the documents\n", total/1000.0);
+		
+		//Secondary test
+		detector = makeDetector(6);
+
+		start = System.currentTimeMillis();
+		pairs = detector.getSuspiciousPairs(100);
+		for (String pair : pairs) {
+			System.out.println(pair);
+		}
+		total = System.currentTimeMillis() - start;
+		System.out.printf("It took %.1f seconds to check for more suspicious 6-gram pairs over 100 in the documents\n", total/1000.0);
+		
+		//Teritary test
+		detector = makeDetector(10);
+
+		start = System.currentTimeMillis();
+		pairs = detector.getSuspiciousPairs(50);
+		for (String pair : pairs) {
+			System.out.println(pair);
+		}
+		total = System.currentTimeMillis() - start;
+		System.out.printf("It took %.1f seconds to check for more suspicious 10-gram pairs over 50 in the documents\n", total/1000.0);
+		
+		
 	}
 	
 	
